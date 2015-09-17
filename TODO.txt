@@ -1,0 +1,8 @@
+TODO:
+git ignore
+project framework
+project plan
+iteration plan
+project proposal
+team role assignments
+
