@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.004" errors="0" skipped="0" tests="1" name="cs5540.bigdata.project.AppTest">
+<testsuite failures="0" time="0.132" errors="0" skipped="0" tests="1" name="cs5540.bigdata.project.AppTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85-2.6.1.2.el7_1.x86_64/jre/lib/amd64"/>
@@ -57,5 +57,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.001" classname="cs5540.bigdata.project.AppTest" name="testApp"/>
+  <testcase time="0.002" classname="cs5540.bigdata.project.AppTest" name="testApp"/>
 </testsuite>
