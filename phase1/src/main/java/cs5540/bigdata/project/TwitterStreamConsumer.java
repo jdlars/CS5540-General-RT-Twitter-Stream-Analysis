@@ -12,6 +12,10 @@ import org.scribe.oauth.OAuthService;
 
 public class TwitterStreamConsumer extends Thread {
 	private static final String STREAM_URI = "https://stream.twitter.com/1.1/statuses/filter.json";
+	private static final String JSON_LBRACE = '{';
+	private static final String JSON_RBRACE = '}';
+	private static final String JSON_LBRACK = '[';
+	private static final String JSON_RBRACK = ']';
 
 	public void run(){
 		try{
@@ -47,6 +51,7 @@ public class TwitterStreamConsumer extends Thread {
 			while((line = reader.readLine()) != null){
 				System.out.println(line);
 			}
+
 		}catch(IOException e){
 			e.printStackTrace();
 		}
