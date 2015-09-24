@@ -7,12 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>phase1</name>
   <url>http://maven.apache.org</url>
-  <repositories>
-    <repository>
-      <id>Spark repository</id>
-      <url>http://www.sparkjava.com/nexus/content/repositories/spark/</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.apache.spark</groupId>
@@ -28,6 +22,11 @@
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-streaming-twitter_2.10</artifactId>
       <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.twitter4j</groupId>
+      <artifactId>twitter4j-core</artifactId>
+      <version>4.0.4</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -46,18 +45,41 @@
   <plugins>
   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-dependency-plugin</artifactId>
+    <artifactId>maven-assembly-plugin</artifactId>
     <executions>
       <execution>
-        <id>copy-dependencies</id>
+        <id>create-my-bundle</id>
         <phase>package</phase>
         <goals>
-          <goal>copy-dependencies</goal>
+          <goal>single</goal>
         </goals>
         <configuration>
-          <outputDirectory>${project.build.directory}</outputDirectory>
-          <overWriteReleases>false</overWriteReleases>
-          <overWriteSnapshots>true</overWriteSnapshots>
+          <archive>
+            <manifest>
+              <mainClass>cs5540.bigdata.project.SparkStreamConsumer</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>spark-core_2.10-1.5.0.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-launcher_2.10-1.5.0.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-network-common_2.10-1.5.0.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-network-shuffle_2.10-1.5.0.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-streaming_2.10-1.2.1.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-streaming-twitter_2.10-1.2.1.jar</descriptorRef>
+          </descriptorRefs>
+          <descriptorRefs>
+            <descriptorRef>spark-unsafe_2.10-1.5.0.jar</descriptorRef>
+          </descriptorRefs>
         </configuration>
       </execution>
     </executions>

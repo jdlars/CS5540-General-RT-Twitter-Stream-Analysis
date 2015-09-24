@@ -11,6 +11,7 @@ import org.apache.spark.api.java.function.*;
 import org.apache.spark.streaming.*;
 import org.apache.spark.streaming.api.java.*;
 import org.apache.spark.streaming.twitter.*;
+import twitter4j.*;
 import scala.Tuple2;
 
 //This code was developed with the help of the Spark Streaming documentation
@@ -41,13 +42,13 @@ public class SparkStreamConsumer {
 		JavaStreamingContext jsc = new JavaStreamingContext(conf, new Duration(1000));
 		
 		//Create DStream (Discretized Stream) of twitter user statuses
-		JavaReceiverInputDStream<twitter4j.Status> statuses = TwitterUtils.createStream(jsc);
+		JavaReceiverInputDStream<Status> statuses = TwitterUtils.createStream(jsc);
 		
 		//Split each line into words
 		JavaDStream<String> words = statuses.flatMap(
-			new FlatMapFunction<twitter4j.Status, String>(){
+			new FlatMapFunction<Status, String>(){
 				@Override
-				public Iterable<String> call(twitter4j.Status x){
+				public Iterable<String> call(Status x){
 					return Arrays.asList(x.getText().split(" "));
 				}
 			}
