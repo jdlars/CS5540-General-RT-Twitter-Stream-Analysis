@@ -41,7 +41,7 @@ public class SparkStreamConsumer {
 		);
 		
 		//Count each word in each batch
-		JavaPairDStream<String, Integer> pairs = words.map(
+		JavaPairDStream<String, Integer> pairs = words.mapToPair(
 			new PairFunction<String, String, Integer>(){
 				@Override
 				public Tuple2<String, Integer> call(String s) throws Exception {
